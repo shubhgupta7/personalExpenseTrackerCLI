@@ -21,9 +21,8 @@ def addExpense(tracked=False):
 def addTracker():
     print("Create a user and a seperate expense tracker for yourself")
     print("Enter your name")
-    name = input()
-    name = name.lower()
-    if ExpenseTracker.User_exists(name.lower()):
+    name = input().lower()
+    if ExpenseTracker.User_exists(name):
         print("User already exists, please select option 5 in main menu")
         return
     expense_tracker = ExpenseTracker(name)
@@ -33,7 +32,7 @@ def show_untracked_expenses():
      return expense.Expense.show_all_expenses()
 
 def addExpensetoExistingUser():
-    name = input("Please enter your name, pre existing in the database")
+    name = input("Please enter your name, pre existing in the database").lower()
     if not ExpenseTracker.User_exists(name):
         print("The user does not exist kindly create a new user first")
         return
@@ -42,7 +41,7 @@ def addExpensetoExistingUser():
     et.expenses.append(expensiveness)
 
 def getexpensebyname():
-    name = input("Enter your Name : ")
+    name = input("Enter your Name : ").lower()
     et = ExpenseTracker.existing_user.get(name)
     if et is None:
         print("Name is not there, add to the tracker first")
